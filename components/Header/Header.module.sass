@@ -1,0 +1,163 @@
+@import "../../sass/dark"
+@import "../../sass/TypeColorTasks"
+
+.header
+    grid-column: 2/3
+    grid-row: 1/1
+    width: 800px
+    height: 150px
+    background-color: $body
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    justify-content: space-around
+
+.wrapper
+    display: flex
+    align-items: center
+    justify-content: space-between
+    width: 100%
+
+.square
+    color: $blue
+
+.wrapper_title
+    display: flex
+    height: auto
+    align-items: center
+    justify-content: space-around
+    width: 100%
+    max-width: 120px
+    color: $title-task
+
+.title
+    color: $title-task
+    text-transform: capitalize
+    margin: auto 0
+
+.square
+    color: $blue
+
+.wrapper_icons
+    display: flex
+    align-items: center
+    justify-content: space-around
+    width: 100%
+    max-width: 120px
+    color: $title-task
+    padding: 10px
+
+.search
+    width: 20px
+    height: 20px
+    &:hover
+        color: $content-task
+        cursor: pointer
+        transition: .4s all
+
+.star
+    width: 20px
+    height: 20px
+    &:hover
+        color: $content-task
+        cursor: pointer
+        transition: .4s all
+
+.dots
+    width: 20px
+    height: 20px
+    &:hover
+        color: $content-task
+        cursor: pointer
+        transition: .4s all
+
+.wrapper_options
+    display: flex
+    align-items: center
+    justify-content: left
+    width: 100%
+    gap: 3rem
+    height: 50%
+    li
+        color: $content-task
+        cursor: pointer
+        text-transform: capitalize
+        font-size: 1rem
+        font-weight: 600
+        position: relative
+
+.discussion
+    &:hover
+        color: $title-task
+        transition: .5s all
+        &::after
+            transition: .5s all
+            position: absolute
+            width: 40px
+            height: 2px
+            content: ''
+            background-color: #fff
+            bottom: -10px
+            left: 0
+
+.tasks
+    &:hover
+        color: $title-task
+        transition: .5s all
+        &::after
+            position: absolute
+            width: 40px
+            height: 2px
+            content: ''
+            transition: .5s all
+            background-color: #fff
+            bottom: -10px
+            left: 0
+
+.timeline
+    &:hover
+        color: $title-task
+        transition: .5s all
+        &::after
+            position: absolute
+            width: 40px
+            height: 2px
+            content: ''
+            background-color: #fff
+            transition: .5s all
+            bottom: -10px
+            left: 0
+
+.files
+    &:hover
+        color: $title-task
+        transition: .5s all
+        &::after
+            position: absolute
+            width: 40px
+            height: 2px
+            content: ''
+            background-color: #fff
+            transition: .5s all
+            bottom: -10px
+            left: 0
+
+.overview
+    &:hover
+        color: $title-task
+        transition: .5s all
+        &::after
+            position: absolute
+            transition: .5s all
+            width: 40px
+            height: 2px
+            content: ''
+            background-color: #fff
+            bottom: -10px
+            left: 0
+
+.plus
+    color: none
+
+.favorite
+    border: 2px solid red
