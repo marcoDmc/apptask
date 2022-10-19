@@ -15,11 +15,15 @@ import { useState } from "react";
 const Sidebar = ({ changeUserValue }) => {
   const [controlFavorite, setControlFavorite] = useState(false);
   const [controlAll, setControlAll] = useState(false);
+  const [openTab, setOpenTab] = useState(true);
 
   return (
     <aside className={module.aside}>
       <div className={module.wrapper_icons}>
-        <span className={module.span}>
+        <span
+          className={module.span}
+          onClick={() => setOpenTab((prev) => !prev)}
+        >
           <TiThLargeOutline className={module.window} />
         </span>
         <span className={module.span}>
@@ -41,7 +45,10 @@ const Sidebar = ({ changeUserValue }) => {
           <BsGear className={module.gear} />
         </span>
       </div>
-      <div className={module.wrapper_tables}>
+      <div
+        className={module.wrapper_tables}
+        style={openTab ? { display: "block" } : { display: "none" }}
+      >
         <ul
           className={module.favorite}
           onClick={() => setControlFavorite((prev) => !prev)}
