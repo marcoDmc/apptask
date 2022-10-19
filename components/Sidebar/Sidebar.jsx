@@ -12,9 +12,10 @@ import { FiUsers } from "react-icons/fi";
 import { BsGear } from "react-icons/bs";
 import { useState } from "react";
 
-const Sidebar = () => {
+const Sidebar = ({ changeUserValue }) => {
   const [controlFavorite, setControlFavorite] = useState(false);
   const [controlAll, setControlAll] = useState(false);
+
   return (
     <aside className={module.aside}>
       <div className={module.wrapper_icons}>
@@ -33,7 +34,7 @@ const Sidebar = () => {
         <span className={module.span}>
           <IoIosNotificationsOutline className={module.bell} />
         </span>
-        <span className={module.span}>
+        <span className={module.span} onClick={changeUserValue}>
           <FiUsers className={module.users} />
         </span>
         <span className={module.span}>

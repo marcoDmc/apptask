@@ -1,12 +1,21 @@
 import module from "./Profile.module.sass";
 import { AiTwotoneVideoCamera, AiOutlineCloseCircle } from "react-icons/ai";
 import { BsTelephonePlusFill, BsThreeDotsVertical } from "react-icons/bs";
+import { useContext } from "react";
+import { ControllingUserTab } from "../../context/ControllingUserTab.js";
 
-const Profile = () => {
+const Profile = ({ changeUserValue }) => {
+  const controllTab = useContext(ControllingUserTab);
   return (
-    <div className={module.container}>
+    <div
+      className={module.container}
+      style={controllTab ? { display: "grid" } : { display: "none" }}
+    >
       <span className={module.wapper_icons}>
-        <AiOutlineCloseCircle className={module.close} />
+        <AiOutlineCloseCircle
+          className={module.close}
+          onClick={changeUserValue}
+        />
         <AiTwotoneVideoCamera className={module.camera} />
         <BsTelephonePlusFill className={module.tel} />
         <BsThreeDotsVertical className={module.dot} />
