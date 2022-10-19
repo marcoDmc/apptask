@@ -1,0 +1,103 @@
+@import "../../sass/TypeColorScopeTask"
+@import "../../sass/TypeColorTasks"
+@import "../../sass/dark"
+
+.main
+    display: grid
+    grid-column: 2/3
+    grid-row: 1/2
+    height: 500px
+    overflow: hidden
+    margin: 160px 0
+    flex: 1
+    place-items: center
+    justify-content: flex-start
+
+.options
+    display: grid
+    width: 100%
+
+.wrapper_task
+    height: 100%
+    max-height: 400px
+    overflow-y: scroll
+    padding: 10px
+    gap: 1rem
+    display: grid
+    grid-template-columns: repeat(3,auto)
+    padding: 1rem 0 0 0
+    &::-webkit-scrollbar
+        width: 12px
+    &::-webkit-scrollbar-track
+        background: $body
+    &::-webkit-scrollbar-thumb
+        border-radius: 10px
+        background-color: $blue
+        border: 2px solid black
+
+.options
+
+.tab
+    display: flex
+    gap: 2rem
+
+.tables
+    width: 100px
+    padding: 1px
+    border-radius: 10px
+    color: $content-task
+    cursor: pointer
+    text-align: center
+    display: flex
+    align-items: center
+    height: 35px
+    justify-content: space-around
+    &:hover
+        transition: .5s all
+        color: $title-task
+        background-color: $content-task
+
+.newtasks
+    border-top: 1px solid $content-task
+    display: flex
+    gap: 10px
+    align-items: center
+    justify-content: center
+
+.createtask
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: flex-start
+    width: 220px
+    color: $title-task
+    padding: 0 0 10px 0
+
+    p
+        display: flex
+        width: 100%
+        align-items: flex-start
+        justify-content: space-between
+        font-size: 1rem
+        font-weight: 600
+        text-transform: capitalize
+    span
+        background-color: $content-task
+        padding: 8px
+        border-radius: 8px
+        width: 100%
+        max-width: 200px
+        font-size: 1.2rem
+        color: $title-task
+        cursor: pointer
+        display: flex
+        align-items: center
+        justify-content: center
+        &:hover
+            transition: .5s all
+            opacity: .7
+.dot
+    cursor: pointer
+    &:hover
+        transition: .5s all
+        opacity: .7
