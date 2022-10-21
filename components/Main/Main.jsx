@@ -3,7 +3,10 @@ import module from "./Main.module.sass";
 import { BsKanban, BsTable, BsThreeDotsVertical } from "react-icons/bs";
 import { AiOutlineOrderedList } from "react-icons/ai";
 import { CgMathPlus } from "react-icons/cg";
-const Main = () => {
+
+import tasks from "../../mock/exampleTasks.json";
+
+const Main = ({ handleCreateNewTask }) => {
   return (
     <main className={module.main}>
       <div className={module.options}>
@@ -22,49 +25,49 @@ const Main = () => {
           </span>
         </span>
         <span className={module.newtasks}>
-          {/*  */}
           <div className={module.createtask}>
             <p>
               new request
               <BsThreeDotsVertical className={module.dot} />
             </p>
-            <span>
+            <span onClick={handleCreateNewTask}>
               <CgMathPlus />
             </span>
           </div>
           <div className={module.createtask}>
-            {" "}
             <p>
               in complete
               <BsThreeDotsVertical className={module.dot} />
             </p>
-            <span>
+            <span onClick={handleCreateNewTask}>
               <CgMathPlus />
             </span>
           </div>
           <div className={module.createtask}>
-            {" "}
             <p>
               complete
               <BsThreeDotsVertical className={module.dot} />
             </p>
-            <span>
+            <span onClick={handleCreateNewTask}>
               <CgMathPlus />
             </span>
           </div>
         </span>
       </div>
       <div className={module.wrapper_task}>
-        <Tasks />
-        <Tasks />
-        <Tasks />
-        <Tasks />
-        <Tasks />
-        <Tasks />
-        <Tasks />
-        <Tasks />
-        <Tasks />
-        <Tasks />
+        {/* iterating over locally saved sample data file - mock */}
+        {tasks.map((task) => (
+          <Tasks
+            key={task.title}
+            typeOne={task.typeOne}
+            typeTwo={task.typeTwo}
+            typetitle={task.typeTwo}
+            colorOne={task.colorOne}
+            colorTwo={task.colorTwo}
+            title={task.title}
+            content={task.content}
+          />
+        ))}
       </div>
     </main>
   );
