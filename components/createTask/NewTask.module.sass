@@ -1,0 +1,116 @@
+@import "../../sass/dark"
+@import "../../sass/TypeColorTasks"
+
+.wrapper
+    width: 100vw
+    height: 100%
+    position: absolute
+    z-index: 2
+    inset: 0
+    background-color: #fff
+    display: flex
+    align-items: center
+    justify-content: center
+    background-color: rgba(0,0 ,0 ,0.45 )
+    animation: .4s linear .4s both fading
+    @keyframes fading
+        0%
+            opacity: 0
+        100%
+            opacity: 1
+
+.form
+    border: 1px solid $salmon
+    height: 100%
+    max-height: 400px
+    width: 100%
+    max-width: 300px
+    border-radius: 5px
+    padding: 10px
+    gap: 10px
+    background-color: $body
+    display: flex
+    flex-direction: column
+    justify-content: space-around
+    position: relative
+    font-weight: 600
+
+    &::after
+        position: absolute
+        z-index: -1
+        content: ''
+        width: 101%
+        border-radius: 5px
+        left: -2px
+        height: 101%
+        background: linear-gradient(180deg , $opaque,$salmon,$pink)
+
+.label
+    font-size: 14px
+    display: flex
+    color: $title-task
+    align-items: center
+    justify-content: space-between
+.sharp
+    color: $salmon
+    width: 20px
+    height: 20px
+    cursor: pointer
+    &:hover
+        transition: .5s all
+        opacity: .7
+.title
+    outline: none
+    background: transparent
+    border: 1px solid
+    padding: 10px
+    color: $salmon
+    border-color: rgba(300,300 ,300 ,0.25 )
+    &::placeholder
+        text-transform: capitalize
+        font-weight: 600
+.wrapper_title
+    display: grid
+
+.task_type
+    outline: none
+    background: transparent
+    border: 1px solid
+    padding: 10px
+    color: $salmon
+    border-color: rgba(300,300 ,300 ,0.25 )
+    &::placeholder
+        text-transform: capitalize
+        font-weight: 600
+
+.content
+    width: 100%
+    height: 100%
+    outline: none
+    resize: none
+    color: $salmon
+    background: transparent
+    border-color: rgba(300,300 ,300 ,0.25 )
+    &::placeholder
+        text-transform: capitalize
+        font-weight: 600
+        display: flex
+
+.create_task
+    width: 100%
+    max-width: 200px
+    padding: 5px
+    border-radius: 3px
+    outline: none
+    font-size: 14px
+    text-transform: capitalize
+    color: $body
+    background: linear-gradient(300deg , $opaque,$salmon,$pink)
+    border: none
+    height: 40px
+    margin: 0 auto
+    cursor: pointer
+    font-weight: 600
+    &:hover
+        transition: .4s all
+        opacity: .7
