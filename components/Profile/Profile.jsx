@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import module from "./Profile.module.sass";
 import { AiTwotoneVideoCamera, AiOutlineCloseCircle } from "react-icons/ai";
 import { BsTelephonePlusFill, BsThreeDotsVertical } from "react-icons/bs";
