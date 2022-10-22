@@ -24,11 +24,9 @@ const NewTask = ({ newTask, handleCreateNewTask }) => {
         </span>
 
         <span className={module.wrapper_title}>
-          {/* <label htmlFor={module.title}>title</label> */}
           <input type="text" placeholder="title" className={module.title} />
         </span>
         <span className={module.wrapper_title}>
-          {/* <label htmlFor={module.task_type}>task type</label> */}
           <input
             type="text"
             placeholder="type task"
@@ -36,7 +34,6 @@ const NewTask = ({ newTask, handleCreateNewTask }) => {
           />
         </span>
         <span className={module.wrapper_title}>
-          {/* <label htmlFor={module.content}>content</label> */}
           <textarea
             className={module.content}
             placeholder="content"
