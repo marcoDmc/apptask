@@ -4,9 +4,10 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import { CgMathPlus } from "react-icons/cg";
 import { IoSquareOutline } from "react-icons/io5";
 import module from "./Header.module.sass";
-
+import { useState } from "react";
 
 const Header = () => {
+  const [controllSearch, setControllSearch] = useState(false);
   return (
     <header className={module.header}>
       <span className={module.wrapper}>
@@ -15,7 +16,18 @@ const Header = () => {
           <h1 className={module.title}>task</h1>
         </span>
         <span className={module.wrapper_icons}>
-          <FiSearch className={module.search} />
+          <span className={module.wrapper_search}>
+            <input
+              type="text"
+              className={module.search_input}
+              style={controllSearch ? { display: "flex" } : { display: "none" }}
+              onBlur={() => setControllSearch(false)}
+            />
+          </span>
+          <FiSearch
+            className={module.search}
+            onClick={() => setControllSearch((prev) => !prev)}
+          />
           <AiOutlineStar className={module.star} />
           <BsThreeDotsVertical className={module.dots} />
         </span>
