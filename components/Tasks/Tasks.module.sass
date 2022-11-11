@@ -9,6 +9,7 @@
     padding: 10px
     border-radius: 10px
     position: relative
+    border: 1px dashed $blue
 
 .wrapper_types
     width: 100%
@@ -69,3 +70,88 @@
     &:hover
         opacity: .7
         transition: .5s all
+.task_editor
+    position: absolute
+    z-index: 1
+    height: 100%
+    width: 100%
+    left: 0
+    flex-direction: column
+    align-items: center
+    justify-content: space-between
+    background: #fff
+    border-radius: 8px
+    padding: 10px 5px
+    animation: .5s linear .5s both identifier
+    @keyframes identifier
+        0%
+            opacity: 0
+        50%
+            opacity: .5
+        100%
+            opacity: 1
+
+    .close
+        width: 20px
+        height: 20px
+        color: $body
+        position: absolute
+        top: 15px
+        right: 10px
+        &:hover
+            transition: .5s all
+            opacity: .7
+            cursor: pointer
+    strong
+        font-size: 14px
+        text-transform: capitalize
+        text-align: left
+        width: 100%
+        padding: 10px
+    .form
+        height: 100%
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: space-between
+        width: 100%
+        .content
+            width: 100%
+            max-width: calc( 100% / 1.1 )
+            padding: 8px
+            outline: none
+            border: 1px solid $title-task
+            border-radius: 5px
+            color: $body
+            font-size: 14px
+            font-weight: 700
+        label
+            width: 100%
+            text-align: center
+            font-size: 14px
+        #opt
+            border: none
+            outline: none
+            background: $body
+            padding: 3px
+            width: 50%
+            color: $blue
+            border-radius: 10px
+            &:hover
+                transition: .5s all
+                cursor: pointer
+        .save
+            border: none
+            outline: none
+            width: 100%
+            padding: 10px
+            background-color: $tasks
+            color: $opaque
+            font-size: 14px
+            font-weight: 700
+            text-transform: uppercase
+            border-radius: 5px
+            cursor: pointer
+            &:hover
+                transition: .5s all
+                opacity: .7
