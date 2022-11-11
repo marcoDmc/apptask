@@ -22,7 +22,7 @@ const Main = () => {
 
   async function handleCreateTask(identity, TypeTask, Title, Content) {
     const newTask = {
-      identity,
+      identity, 
       TypeTask,
       Title,
       Content,
