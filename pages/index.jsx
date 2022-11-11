@@ -4,29 +4,21 @@ import Profile from "../components/Profile/Profile";
 import Sidebar from "../components/Sidebar/Sidebar";
 import { ControllingUserTab } from "../context/ControllingUserTab.js";
 import { useState } from "react";
-import NewTask from "../components/createTask/NewTask";
 
 const App = () => {
   const [controllTabUser, setControllTabUser] = useState(false);
-  const [newTask, setNewTask] = useState(false);
-  const changeUserValue = () => setControllTabUser(!controllTabUser);
 
-  const handleCreateNewTask = () => setNewTask(!newTask);
+  const changeUserValue = () => setControllTabUser(!controllTabUser);
 
   return (
     <ControllingUserTab.Provider value={controllTabUser}>
-      <>
-        <section>
-          <NewTask
-            newTask={newTask}
-            handleCreateNewTask={handleCreateNewTask}
-          />
-          <Sidebar changeUserValue={changeUserValue} />
-          <Header />
-          <Main handleCreateNewTask={handleCreateNewTask} />
-          <Profile changeUserValue={changeUserValue} />
-        </section>
-      </>
+      {" "}
+      <section>
+        <Sidebar changeUserValue={changeUserValue} />
+        <Header />
+        <Main />
+        <Profile changeUserValue={changeUserValue} />
+      </section>
     </ControllingUserTab.Provider>
   );
 };

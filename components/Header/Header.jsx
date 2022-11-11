@@ -1,7 +1,6 @@
 import { FiSearch } from "react-icons/fi";
 import { AiOutlineStar } from "react-icons/ai";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import { CgMathPlus } from "react-icons/cg";
 import { IoSquareOutline } from "react-icons/io5";
 import module from "./Header.module.sass";
 import { useState } from "react";
@@ -38,7 +37,6 @@ const Header = () => {
         <li className={module.timeline}>timeline</li>
         <li className={module.files}>files</li>
         <li className={module.overview}>overview</li>
-        <CgMathPlus className={module.plus} />
       </span>
     </header>
   );
