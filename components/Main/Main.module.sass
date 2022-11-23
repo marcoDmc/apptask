@@ -37,6 +37,12 @@
         border-radius: 10px
         background-color: $blue
         border: 2px solid black
+    .empty
+        color: $title-task
+        text-transform: capitalize
+        font-weight: bold
+        letter-spacing: 1px
+        width: 100%
 
 .options
 
@@ -64,8 +70,9 @@
     border-top: 1px solid $content-task
     display: flex
     gap: 10px
-    align-items: center
-    justify-content: center
+    align-items: flex-start
+    justify-content: flex-start
+    height: 100%
 
 .createtask
     display: flex
@@ -74,16 +81,45 @@
     justify-content: flex-start
     width: 220px
     color: $title-task
-    padding: 0 0 10px 0
+    height: 100%
+    border-right: 1px solid $content-task
+    padding: 0 10px
 
     p
         display: flex
         width: 100%
+        max-width: 200px
+        width: 100%
         align-items: flex-start
         justify-content: space-between
+        padding: 10px
         font-size: 1rem
         font-weight: 600
         text-transform: capitalize
+    .complete
+        width: 100%
+        max-width: 200px
+        padding: 10px
+        border-radius: 10px
+        &:hover
+            transition: .5s all
+            cursor: pointer
+            opacity: .7
+            color: $body
+            background: $complete
+
+    .incomplete
+        width: 100%
+        max-width: 200px
+        padding: 10px
+        border-radius: 10px
+        &:hover
+            transition: .5s all
+            cursor: pointer
+            opacity: .7
+            color: $body
+            background: $new
+
     span
         background-color: $content-task
         padding: 8px
@@ -100,8 +136,3 @@
         &:hover
             transition: .5s all
             opacity: .7
-.dot
-    cursor: pointer
-    &:hover
-        transition: .5s all
-        opacity: .7
