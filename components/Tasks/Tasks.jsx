@@ -7,7 +7,8 @@ import {
   AiTwotoneEdit,
   AiOutlineCloseCircle,
 } from "react-icons/ai";
-import { useState } from "react";
+import Axios from "../../api/api";
+import { useEffect, useState } from "react";
 
 const Tasks = ({
   typeOne,
@@ -26,6 +27,8 @@ const Tasks = ({
   const [openEdit, setOpenEdit] = useState(false);
   const [changeInputEditorTask, setInputEditorTask] = useState("");
   const [changeSelectOptions, setChangSelectOptions] = useState("");
+  const [checkbox, setCheckbox] = useState(false);
+  const [complete, setIsComplete] = useState(false);
 
   function handleEditTask() {
     setOpenEdit(true);
@@ -55,6 +58,26 @@ const Tasks = ({
     del(id);
     setOpen(false);
   }
+
+  async function handleTaskComplete() {
+    const option = "complete";
+    setIsComplete(!complete);
+
+    const request = await Axios.put(`/tasks/update/${id}/${option}`, {
+      content: complete,
+    });
+  }
+
+  useEffect(() => {
+    setTimeout(() => {
+      (async function handleGetStatusTasks() {
+        const { data } = await Axios.get("/tasks/read");
+        data.map((tasks) => {
+          tasks.Complete ? setCheckbox(true) : setCheckbox(false);
+        });
+      })();
+    }, 5000);
+  }, [complete]);
 
   return (
     <div className={module.task} onMouseLeave={() => setOpen(false)}>
@@ -94,8 +117,39 @@ const Tasks = ({
           </span>
         </div>
       </span>
-      <strong className={module.Title}>{title}</strong>
-      <p className={module.content}>{content}</p>
+      <strong
+        className={module.Title}
+        style={
+          checkbox
+            ? { textDecoration: "line-through 1px #CACCCE", color: "#F85059" }
+            : { textDecoration: "none" }
+        }
+      >
+        {title}
+      </strong>
+      <p
+        className={module.content}
+        style={
+          checkbox
+            ? { textDecoration: "line-through 1px #CACCCE", color: "#F85059" }
+            : { textDecoration: "none" }
+        }
+      >
+        {content}
+      </p>
+
+      <label
+        className={module.check}
+        aria-label="checkbox"
+        onClick={handleTaskComplete}
+      >
+        <span
+          className={module.checked}
+          style={checkbox ? { color: "#E8FE94" } : { color: "#101213" }}
+        >
+          ✔
+        </span>
+      </label>
 
       <div
         className={module.task_editor}
@@ -122,6 +176,7 @@ const Tasks = ({
             <option value="typetask">typetask</option>
             <option value="title">title</option>
             <option value="content">content</option>
+            {/* <option value="complete">complete</option> */}
           </select>
           <span className={module.response}>{status}</span>
           <button className={module.save}>save</button>
