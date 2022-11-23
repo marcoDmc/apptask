@@ -10,7 +10,9 @@ import Axios from "../../api/api";
 const Main = () => {
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState(false);
+  const Complete = false;
   const [messageStatus, setMessageStatus] = useState("waiting...⏳");
+
   const handleCreateNewTask = () => setNewTask((prev) => !prev);
 
   async function handleGetTasks() {
@@ -22,10 +24,11 @@ const Main = () => {
 
   async function handleCreateTask(identity, TypeTask, Title, Content) {
     const newTask = {
-      identity, 
+      identity,
       TypeTask,
       Title,
       Content,
+      Complete,
     };
 
     if (identity && TypeTask && Title && Content) {
@@ -94,52 +97,41 @@ const Main = () => {
           </span>
           <span className={module.newtasks}>
             <div className={module.createtask}>
-              <p>
-                new request
-                <BsThreeDotsVertical className={module.dot} />
-              </p>
+              <p>new request</p>
               <span onClick={handleCreateNewTask}>
                 <CgMathPlus />
               </span>
             </div>
             <div className={module.createtask}>
-              <p>
-                in complete
-                <BsThreeDotsVertical className={module.dot} />
-              </p>
-              <span onClick={handleCreateNewTask}>
-                <CgMathPlus />
-              </span>
+              <p className={module.incomplete}>in complete</p>
             </div>
             <div className={module.createtask}>
-              <p>
-                complete
-                <BsThreeDotsVertical className={module.dot} />
-              </p>
-              <span onClick={handleCreateNewTask}>
-                <CgMathPlus />
-              </span>
+              <p className={module.complete}>complete</p>
             </div>
           </span>
         </div>
         <div className={module.wrapper_task}>
-          {tasks.map((obj) => (
-            // eslint-disable-next-line react/jsx-key
-            <Tasks
-              key={obj._id}
-              typeOne={obj.TypeTask}
-              typeTwo={obj.TypeTask}
-              colorOne="#B4D6FF"
-              colorTwo="#000"
-              typetitle={obj.TypeTask}
-              title={obj.Title}
-              content={obj.Content}
-              edit={handleUpdateTask}
-              del={handleDeleteTask}
-              id={obj._id}
-              status={messageStatus}
-            />
-          ))}
+          {tasks.length > 0 ? (
+            tasks.map((obj) => (
+              // eslint-disable-next-line react/jsx-key
+              <Tasks
+                key={obj._id}
+                typeOne={obj.TypeTask}
+                typeTwo={obj.TypeTask}
+                colorOne="#B4D6FF"
+                colorTwo="#000"
+                typetitle={obj.TypeTask}
+                title={obj.Title}
+                content={obj.Content}
+                edit={handleUpdateTask}
+                del={handleDeleteTask}
+                id={obj._id}
+                status={messageStatus}
+              />
+            ))
+          ) : (
+            <strong className={module.empty}>no tasks , it is empty</strong>
+          )}
         </div>
       </main>
       <NewTask
