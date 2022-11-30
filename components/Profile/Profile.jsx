@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import module from "./Profile.module.sass";
-import { AiTwotoneVideoCamera, AiOutlineCloseCircle } from "react-icons/ai";
-import { BsTelephonePlusFill, BsThreeDotsVertical } from "react-icons/bs";
+import { AiOutlineCloseCircle } from "react-icons/ai";
+import { BsThreeDotsVertical } from "react-icons/bs";
 import { useContext } from "react";
 import { ControllingUserTab } from "../../context/ControllingUserTab.js";
 
@@ -17,8 +17,7 @@ const Profile = ({ changeUserValue }) => {
           className={module.close}
           onClick={changeUserValue}
         />
-        <AiTwotoneVideoCamera className={module.camera} />
-        <BsTelephonePlusFill className={module.tel} />
+
         <BsThreeDotsVertical className={module.dot} />
       </span>
       <picture>

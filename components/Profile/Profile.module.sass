@@ -5,10 +5,13 @@
     max-height: 500px
     grid-row: 1/1
     width: 100%
+    max-width: 200px
     animation: .5s linear .5s both rightLeft
     overflow: hidden
     background-color: $body
     place-items: center
+    display: none
+
     @keyframes rightLeft
         0%
             max-width: 0
@@ -34,24 +37,6 @@
 .close
     position: absolute
     left: 10px
-    color: #fff
-    width: 20px
-    height: 20px
-    cursor: pointer
-    &:hover
-        transition: .4s all
-        opacity: .7
-
-.camera
-    color: #fff
-    width: 20px
-    height: 20px
-    cursor: pointer
-    &:hover
-        transition: .4s all
-        opacity: .7
-
-.tel
     color: #fff
     width: 20px
     height: 20px
@@ -109,3 +94,7 @@
     display: flex
     justify-content: center
     align-items: center
+    cursor: pointer
+    &:hover
+        transition: .5s all
+        opacity: .8

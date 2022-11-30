@@ -1,8 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import module from "./Main.module.sass";
 import Tasks from "../Tasks/Tasks";
 import NewTask from "../createTask/NewTask";
-import { BsKanban, BsTable, BsThreeDotsVertical } from "react-icons/bs";
-import { AiOutlineOrderedList } from "react-icons/ai";
 import { CgMathPlus } from "react-icons/cg";
 import { useEffect, useState } from "react";
 import Axios from "../../api/api";
@@ -12,15 +11,9 @@ const Main = () => {
   const [newTask, setNewTask] = useState(false);
   const Complete = false;
   const [messageStatus, setMessageStatus] = useState("waiting...⏳");
+  const [isComplete, setIsComplete] = useState(false);
 
   const handleCreateNewTask = () => setNewTask((prev) => !prev);
-
-  async function handleGetTasks() {
-    const request = await Axios.get("/tasks/read");
-    const { data } = await request;
-    localStorage.setItem("tasks", JSON.stringify(data));
-    setTasks(JSON.parse(localStorage.getItem("tasks")));
-  }
 
   async function handleCreateTask(identity, TypeTask, Title, Content) {
     const newTask = {
@@ -73,40 +66,74 @@ const Main = () => {
     }
   }
 
+  async function handleFilterIncompleteCompleteTasks() {
+    const { data } = await Axios.get("/tasks/read");
+
+    if (isComplete) {
+      const complete = data.filter((task) => task.Complete === true);
+      setTimeout(() => {
+        localStorage.setItem("tasks", JSON.stringify(complete));
+        setTasks(JSON.parse(localStorage.getItem("tasks")));
+      }, 2000);
+      console.log(complete);
+    } else {
+      const incomplete = data.filter((task) => !task.Complete === true);
+      setTimeout(() => {
+        localStorage.setItem("tasks", JSON.stringify(incomplete));
+        setTasks(JSON.parse(localStorage.getItem("tasks")));
+      }, 2000);
+      console.log(incomplete);
+    }
+  }
+
+  function handleTasksComplete(e) {
+    setIsComplete(true);
+  }
+
+  function handleTaskIncomplete() {
+    setIsComplete(false);
+  }
+
   useEffect(() => {
-    handleGetTasks();
-  }, []);
+    handleFilterIncompleteCompleteTasks();
+  }, [isComplete]);
 
   return (
     <>
       <main className={module.main}>
         <div className={module.options}>
-          <span className={module.tab}>
-            <span className={module.tables}>
-              <BsKanban className={module.kanban} />
-              <p className={module.text}>kanban</p>
-            </span>
-            <span className={module.tables}>
-              <BsTable className={module.table} />
-              <p className={module.text}>table</p>
-            </span>
-            <span className={module.tables}>
-              <AiOutlineOrderedList className={module.list} />
-              <p className={module.text}>list view</p>
-            </span>
-          </span>
+          <span className={module.tab}></span>
           <span className={module.newtasks}>
             <div className={module.createtask}>
-              <p>new request</p>
+              <p>new task</p>
               <span onClick={handleCreateNewTask}>
                 <CgMathPlus />
               </span>
             </div>
-            <div className={module.createtask}>
-              <p className={module.incomplete}>in complete</p>
+            <div className={module.createtask} onClick={handleTaskIncomplete}>
+              <p
+                className={module.incomplete}
+                style={
+                  isComplete
+                    ? { backgroundColor: "initial" }
+                    : { backgroundColor: "#F85059" }
+                }
+              >
+                in complete
+              </p>
             </div>
             <div className={module.createtask}>
-              <p className={module.complete}>complete</p>
+              <p
+                className={module.complete}
+                onClick={handleTasksComplete}
+                style={
+                  isComplete
+                    ? { backgroundColor: "#3EC33B" }
+                    : { backgroundColor: "initial" }
+                }
+              >
+                complete
+              </p>
             </div>
           </span>
         </div>

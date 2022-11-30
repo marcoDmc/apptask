@@ -5,12 +5,12 @@
     grid-column: 2/3
     grid-row: 1/1
     width: 800px
-    height: 150px
+    height: 50px
+    z-index: 1
     background-color: $body
     display: flex
     flex-direction: column
     align-items: flex-start
-    justify-content: space-between
     padding: 0 0 0 10px
 
 .wrapper
@@ -78,28 +78,12 @@
             100%
                 transform: scale(1)
 
-.search_input
-    flex: 1
-    padding: 5px
-    border-radius: 6px
-    outline: none
-    z-index: 2
-    border: none
-    background-color: $body
-    color: $salmon
-    animation: .4s linear .4s both identifier
-    @keyframes identifier
-        0%
-            transform: scale(0)
-        100%
-            transform: scale(1)
-
 .search
     width: 20px
     height: 20px
+    cursor: pointer
     &:hover
         color: $content-task
-        cursor: pointer
         transition: .4s all
 
 .star
@@ -132,79 +116,3 @@
         font-size: 1rem
         font-weight: 600
         position: relative
-
-.discussion
-    &:hover
-        color: $title-task
-        transition: .5s all
-        &::after
-            transition: .5s all
-            position: absolute
-            width: 40px
-            height: 2px
-            content: ''
-            background-color: #fff
-            bottom: -10px
-            left: 0
-
-.tasks
-    &:hover
-        color: $title-task
-        transition: .5s all
-        &::after
-            position: absolute
-            width: 40px
-            height: 2px
-            content: ''
-            transition: .5s all
-            background-color: #fff
-            bottom: -10px
-            left: 0
-
-.timeline
-    &:hover
-        color: $title-task
-        transition: .5s all
-        &::after
-            position: absolute
-            width: 40px
-            height: 2px
-            content: ''
-            background-color: #fff
-            transition: .5s all
-            bottom: -10px
-            left: 0
-
-.files
-    &:hover
-        color: $title-task
-        transition: .5s all
-        &::after
-            position: absolute
-            width: 40px
-            height: 2px
-            content: ''
-            background-color: #fff
-            transition: .5s all
-            bottom: -10px
-            left: 0
-
-.overview
-    &:hover
-        color: $title-task
-        transition: .5s all
-        &::after
-            position: absolute
-            transition: .5s all
-            width: 40px
-            height: 2px
-            content: ''
-            background-color: #fff
-            bottom: -10px
-            left: 0
-
-.plus
-    color: none
-
-.favorite
-    border: 2px solid red
